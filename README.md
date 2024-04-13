@@ -54,17 +54,16 @@ After first installation, the module is not working because of a missing configu
 from config.ini.sample by copying it:
 
 ```bash
-cp /data/dbus-opendtu/config.ini.sample /data/dbus-opendtu/config.ini
+cp /data/dbus-opendtu/config.ini.sample /data/conf/dbus-opendtu.ini
 ```
 
 ⚠️**Then, edit it according to your needs before proceeding**⚠️ see [Configuration](#configuration) for details.
 
 ```bash
-nano /data/dbus-opendtu/config.ini
+nano /data/conf/dbus-opendtu.ini
 ```
 
-When updating the software, your configuration is preserved since all modifications due to new software features go to config.ini.sample 
-(of course, you need to check if adapations of your config.ini is required).
+When updating the software, your configuration is preserved (of course, you need to check if adapations of your dbus-opendtu.ini is required).
 
 ## Manual installation
 
