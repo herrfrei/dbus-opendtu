@@ -1,0 +1,2 @@
+- config.ini will be overwritten (or deleted in this fork) when updating
+- logging should not go to file with SetupHelper
