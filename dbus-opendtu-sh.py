@@ -97,6 +97,7 @@ def main():
                 servicename=servicename,
                 paths=paths,
                 actual_inverter=0,
+                config=config
             )
 
             if number_of_inverters == 0: 
@@ -116,6 +117,7 @@ def main():
                         servicename=servicename,
                         paths=paths,
                         actual_inverter=actual_inverter + 1,
+                        config=config
                     )
 
         for actual_template in range(number_of_templates):
@@ -132,6 +134,7 @@ def main():
                 paths=paths,
                 actual_inverter=actual_template,
                 istemplate=True,
+                config=config
             )
 
         logging.info("Connected to dbus, and switching over to gobject.MainLoop() (= event based)")
