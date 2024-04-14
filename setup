@@ -27,8 +27,8 @@ fi
 if [ $scriptAction == 'INSTALL' ] ; then
     logMessage "++ Installing $origPackageName"
 
-	chmod a+x $scriptDir/service_sh/run
-	chmod 755 $scriptDir/service_sh/run
+    chmod a+x $scriptDir/service_sh/run
+    chmod 755 $scriptDir/service_sh/run
 
     installService $origPackageName service_sh
 fi
@@ -40,8 +40,8 @@ if [ $scriptAction == 'UNINSTALL' ] ; then
 
     removeService $origPackageName
 	
-	# should we remove the config file also?
-	# [ -f $configFile ] && rm $configFile
+    # should we remove the config file also?
+    # [ -f $configFile ] && rm $configFile
 fi
 
 # thats all folks - SCRIPT EXITS INSIDE THE FUNCTION
