@@ -1,5 +1,3 @@
-
-
 # dbus-opendtu
 
 > **Attention:**
@@ -8,7 +6,8 @@
 ## Table of contents
 
 * [Introduction](#introduction)
-* [Installation](#installation)
+* [Automatic installation](#automatic-installation-with-setuphelper)
+* [Manual installation](#manual-installation)
   * [Get the code](#get-the-code)
   * [Configuration](#configuration)
     * [Default options](#default-options)
@@ -46,7 +45,27 @@ It works upon [openDTU](https://github.com/tbnobody/OpenDTU) respectively [AhoyD
 
 ---
 
-## Installation
+## Automatic installation with SetupHelper
+
+You need to install [SetupHelper](https://github.com/kwindrem/SetupHelper) before to install/uninstall this package.
+As a bonus, it provides also the automatic reinstallation of the package after a VenusOs update.
+
+After first installation, the module is not working because of a missing configuration file. You need to create it
+from config.ini.sample by copying it:
+
+```bash
+cp /data/dbus-opendtu/config.ini.sample /data/conf/dbus-opendtu.ini
+```
+
+⚠️**Then, edit it according to your needs before proceeding**⚠️ see [Configuration](#configuration) for details.
+
+```bash
+nano /data/conf/dbus-opendtu.ini
+```
+
+When updating the software, your configuration is preserved (of course, you need to check if adapations of your dbus-opendtu.ini is required).
+
+## Manual installation
 
 With the scripts in this repo, it should be easy possible to install, uninstall, restart a service that connects the OpenDTU or Ahoy to the VenusOS and GX devices from Victron.
 
