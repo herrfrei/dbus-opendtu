@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#Script Directory
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(realpath $SCRIPT_DIR/../../../)
+SERVICE_NAME=$(basename $SCRIPT_DIR)
+
+exec 2>&1
+exec $SCRIPT_DIR/backup.sh /data/$SERVICE_NAME.backup

@@ -1,0 +1,9 @@
+#!/bin/sh
+exec 2>&1
+
+#Script Directory
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(realpath $SCRIPT_DIR/../../../)
+SERVICE_NAME=$(basename $SCRIPT_DIR)
+
+exec multilog t s25000 n4 /var/log/${SERVICE_NAME}

@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# dbus-opendtu setup 
+
+# tell CommonResources to:
+#	prompt for install/uninstall
+#	auto install or auto uninstall
+#	then exit
+
+
+#### following line incorporates helper resources into this script
+source "/data/SetupHelper/HelperResources/IncludeHelpers"
+#### end of lines to include helper resources
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(realpath $SCRIPT_DIR)
+SERVICE_NAME=$(basename $SCRIPT_DIR)
+
+# check for config.ini backup
+if [ -f ${SCRIPT_DIR}.backup/config.ini ]; then
+  CONFIG_MSG="A backup of config.ini was found in ${SCRIPT_DIR}.backup. Check if it fits your system!"
+  cp ${SCRIPT_DIR}.backup/config.ini ${SCRIPT_DIR}
+else
+  CONFIG_MSG="You need to adjust the /data/$packageName/config.ini file for your system!"
+fi
+
+#### running manually and OK to proceed - prompt for input
+if [ $scriptAction == 'NONE' ] ; then
+  echo
+  echo "The $packageName package adds support for Hoymiles and other inverters"
+  echo $CONFIG_MSG
+  echo
+  standardActionPrompt
+fi
+
+#### here to do the actual work
+
+if [ $scriptAction == 'INSTALL' ] ; then
+    logMessage "++ Installing $packageName"
+
+    installService ${packageName} services/dbus_opendtu
+    installService ${packageName}_backup services/backup
+fi
+
+# #### uninstalling - check scriptAction again
+# if an install step failed package needs to be removed
+if [ $scriptAction == 'UNINSTALL' ] ; then
+    logMessage "++ Uninstalling $packageName"
+
+    removeService ${packageName}
+    removeService ${packageName}_backup
+fi
+
+# thats all folks - SCRIPT EXITS INSIDE THE FUNCTION
+endScript
